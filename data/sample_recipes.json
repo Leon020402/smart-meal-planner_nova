@@ -1,0 +1,371 @@
+{
+  "recipe_001": {
+    "id": "recipe_001",
+    "name": "Spaghetti Carbonara",
+    "ingredients": [
+      {"name": "spaghetti", "quantity": 200, "unit": "g"},
+      {"name": "eggs", "quantity": 3, "unit": "pcs"},
+      {"name": "pancetta", "quantity": 100, "unit": "g"},
+      {"name": "parmesan", "quantity": 50, "unit": "g"},
+      {"name": "black pepper", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 25,
+    "category": "Italian",
+    "dietary_types": [],
+    "estimated_cost": 6.5,
+    "instructions": "Boil spaghetti until al dente. Fry pancetta in a pan until crispy. In a bowl, whisk eggs with grated parmesan and black pepper. Remove pan from heat, add hot pasta and pancetta, then quickly stir in the egg mixture. Toss vigorously so the sauce coats the pasta. Serve immediately with extra parmesan."
+  },
+  "recipe_002": {
+    "id": "recipe_002",
+    "name": "Avocado Toast with Eggs",
+    "ingredients": [
+      {"name": "bread", "quantity": 2, "unit": "pcs"},
+      {"name": "avocado", "quantity": 1, "unit": "pcs"},
+      {"name": "eggs", "quantity": 2, "unit": "pcs"},
+      {"name": "lemon juice", "quantity": 1, "unit": "tbsp"},
+      {"name": "olive oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"},
+      {"name": "chili flakes", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 15,
+    "category": "American",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 4.0,
+    "instructions": "Toast the bread slices. Mash avocado with lemon juice, salt, and olive oil. Fry or poach the eggs to your liking. Spread avocado mixture on toast, top with egg, sprinkle chili flakes. Serve immediately."
+  },
+  "recipe_003": {
+    "id": "recipe_003",
+    "name": "Chicken Stir Fry",
+    "ingredients": [
+      {"name": "chicken breast", "quantity": 300, "unit": "g"},
+      {"name": "bell pepper", "quantity": 1, "unit": "pcs"},
+      {"name": "broccoli", "quantity": 150, "unit": "g"},
+      {"name": "soy sauce", "quantity": 3, "unit": "tbsp"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "ginger", "quantity": 1, "unit": "tsp"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 25,
+    "category": "Asian",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 8.0,
+    "instructions": "Cook rice according to package instructions. Slice chicken and vegetables. Heat oil in a wok, stir-fry garlic and ginger for 1 minute. Add chicken and cook until golden. Add vegetables and soy sauce, stir-fry 5 minutes. Drizzle sesame oil and serve over rice."
+  },
+  "recipe_004": {
+    "id": "recipe_004",
+    "name": "Red Lentil Soup",
+    "ingredients": [
+      {"name": "red lentils", "quantity": 200, "unit": "g"},
+      {"name": "tomatoes", "quantity": 2, "unit": "pcs"},
+      {"name": "carrots", "quantity": 2, "unit": "pcs"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "vegetable broth", "quantity": 750, "unit": "ml"}
+    ],
+    "prep_time": 40,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Vegan", "High-Protein", "Gluten-Free"],
+    "estimated_cost": 4.5,
+    "instructions": "Dice onion, carrots, and tomatoes. Sauté onion and garlic in olive oil until soft. Add cumin, carrots, and tomatoes, cook 3 minutes. Add lentils and broth, bring to a boil. Simmer 25 minutes until lentils are tender. Blend partially for a creamy texture. Season and serve."
+  },
+  "recipe_005": {
+    "id": "recipe_005",
+    "name": "Greek Salad",
+    "ingredients": [
+      {"name": "tomatoes", "quantity": 3, "unit": "pcs"},
+      {"name": "cucumber", "quantity": 1, "unit": "pcs"},
+      {"name": "red onion", "quantity": 0.5, "unit": "pcs"},
+      {"name": "feta cheese", "quantity": 100, "unit": "g"},
+      {"name": "olives", "quantity": 60, "unit": "g"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "oregano", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 15,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Quick", "Gluten-Free"],
+    "estimated_cost": 5.5,
+    "instructions": "Chop tomatoes and cucumber into chunks. Thinly slice red onion. Combine vegetables and olives in a bowl. Top with crumbled feta. Drizzle olive oil, sprinkle oregano. Toss gently and serve."
+  },
+  "recipe_006": {
+    "id": "recipe_006",
+    "name": "Beef Tacos",
+    "ingredients": [
+      {"name": "ground beef", "quantity": 300, "unit": "g"},
+      {"name": "taco shells", "quantity": 6, "unit": "pcs"},
+      {"name": "tomatoes", "quantity": 2, "unit": "pcs"},
+      {"name": "lettuce", "quantity": 50, "unit": "g"},
+      {"name": "cheddar cheese", "quantity": 80, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "chili powder", "quantity": 1, "unit": "tsp"},
+      {"name": "sour cream", "quantity": 3, "unit": "tbsp"}
+    ],
+    "prep_time": 30,
+    "category": "Mexican",
+    "dietary_types": ["High-Protein"],
+    "estimated_cost": 9.0,
+    "instructions": "Dice onion and tomatoes. Brown ground beef in a pan, add cumin and chili powder. Warm taco shells in the oven. Fill shells with beef, topped with tomatoes, shredded lettuce, grated cheddar, and a dollop of sour cream."
+  },
+  "recipe_007": {
+    "id": "recipe_007",
+    "name": "Mushroom Risotto",
+    "ingredients": [
+      {"name": "arborio rice", "quantity": 200, "unit": "g"},
+      {"name": "mushrooms", "quantity": 250, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "white wine", "quantity": 100, "unit": "ml"},
+      {"name": "parmesan", "quantity": 60, "unit": "g"},
+      {"name": "butter", "quantity": 30, "unit": "g"},
+      {"name": "vegetable broth", "quantity": 800, "unit": "ml"}
+    ],
+    "prep_time": 45,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Gluten-Free"],
+    "estimated_cost": 7.5,
+    "instructions": "Sauté onion and garlic in butter until soft. Add sliced mushrooms, cook 5 minutes. Add arborio rice and toast 2 minutes. Pour in wine and stir until absorbed. Add warm broth one ladle at a time, stirring constantly until each addition is absorbed (~20 min). Stir in parmesan, season, and serve."
+  },
+  "recipe_008": {
+    "id": "recipe_008",
+    "name": "Banana Pancakes",
+    "ingredients": [
+      {"name": "flour", "quantity": 150, "unit": "g"},
+      {"name": "eggs", "quantity": 2, "unit": "pcs"},
+      {"name": "milk", "quantity": 200, "unit": "ml"},
+      {"name": "banana", "quantity": 1, "unit": "pcs"},
+      {"name": "butter", "quantity": 20, "unit": "g"},
+      {"name": "baking powder", "quantity": 1, "unit": "tsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"},
+      {"name": "maple syrup", "quantity": 2, "unit": "tbsp"}
+    ],
+    "prep_time": 20,
+    "category": "American",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 3.5,
+    "instructions": "Mash banana in a bowl. Whisk in eggs, milk, and melted butter. Add flour, baking powder, and salt; stir until just combined. Heat a non-stick pan over medium heat. Pour small ladlefuls of batter, cook 2-3 min per side until golden. Serve with maple syrup."
+  },
+  "recipe_009": {
+    "id": "recipe_009",
+    "name": "Margherita Pizza",
+    "ingredients": [
+      {"name": "pizza dough", "quantity": 250, "unit": "g"},
+      {"name": "tomato sauce", "quantity": 100, "unit": "ml"},
+      {"name": "mozzarella", "quantity": 150, "unit": "g"},
+      {"name": "fresh basil", "quantity": 10, "unit": "g"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 35,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian"],
+    "estimated_cost": 5.5,
+    "instructions": "Preheat oven to 250°C. Roll out pizza dough on a floured surface. Spread tomato sauce, top with torn mozzarella. Bake 10-12 minutes until crust is golden and cheese bubbles. Remove from oven, add fresh basil leaves and a drizzle of olive oil. Slice and serve."
+  },
+  "recipe_010": {
+    "id": "recipe_010",
+    "name": "Caesar Salad",
+    "ingredients": [
+      {"name": "romaine lettuce", "quantity": 200, "unit": "g"},
+      {"name": "parmesan", "quantity": 40, "unit": "g"},
+      {"name": "croutons", "quantity": 50, "unit": "g"},
+      {"name": "caesar dressing", "quantity": 4, "unit": "tbsp"},
+      {"name": "lemon juice", "quantity": 1, "unit": "tbsp"},
+      {"name": "black pepper", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 15,
+    "category": "American",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 5.0,
+    "instructions": "Wash and chop romaine lettuce into bite-sized pieces. Toss with caesar dressing and lemon juice. Add croutons and grated parmesan. Season with black pepper. Serve immediately."
+  },
+  "recipe_011": {
+    "id": "recipe_011",
+    "name": "Salmon Teriyaki",
+    "ingredients": [
+      {"name": "salmon fillet", "quantity": 300, "unit": "g"},
+      {"name": "soy sauce", "quantity": 3, "unit": "tbsp"},
+      {"name": "honey", "quantity": 2, "unit": "tbsp"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "ginger", "quantity": 1, "unit": "tsp"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"},
+      {"name": "spring onion", "quantity": 2, "unit": "pcs"}
+    ],
+    "prep_time": 25,
+    "category": "Asian",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 11.0,
+    "instructions": "Cook rice. Mix soy sauce, honey, garlic, and ginger for the teriyaki glaze. Heat sesame oil in a pan over medium-high heat. Sear salmon 3-4 minutes per side. Pour glaze over salmon and cook 2 more minutes until caramelized. Serve over rice, garnish with sliced spring onion."
+  },
+  "recipe_012": {
+    "id": "recipe_012",
+    "name": "Vegetable Curry",
+    "ingredients": [
+      {"name": "chickpeas", "quantity": 400, "unit": "g"},
+      {"name": "spinach", "quantity": 100, "unit": "g"},
+      {"name": "tomatoes", "quantity": 2, "unit": "pcs"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "coconut milk", "quantity": 200, "unit": "ml"},
+      {"name": "curry powder", "quantity": 2, "unit": "tbsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 35,
+    "category": "Indian",
+    "dietary_types": ["Vegetarian", "Vegan", "Gluten-Free", "High-Protein"],
+    "estimated_cost": 5.5,
+    "instructions": "Cook rice. Sauté onion and garlic in oil until soft. Add curry powder and cook 1 minute. Add tomatoes and chickpeas, cook 5 minutes. Pour in coconut milk, simmer 10 minutes. Stir in spinach until wilted. Serve over rice."
+  },
+  "recipe_013": {
+    "id": "recipe_013",
+    "name": "French Omelette",
+    "ingredients": [
+      {"name": "eggs", "quantity": 3, "unit": "pcs"},
+      {"name": "butter", "quantity": 15, "unit": "g"},
+      {"name": "chives", "quantity": 5, "unit": "g"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"},
+      {"name": "black pepper", "quantity": 0.25, "unit": "tsp"}
+    ],
+    "prep_time": 10,
+    "category": "French",
+    "dietary_types": ["Vegetarian", "Quick", "Gluten-Free", "Low-Cost"],
+    "estimated_cost": 2.5,
+    "instructions": "Whisk eggs with salt and pepper. Melt butter in a non-stick pan over medium heat. Pour in eggs, stirring gently with a spatula while shaking the pan. When eggs are just set but still slightly glossy, fold the omelette in thirds. Slide onto a plate, garnish with chopped chives."
+  },
+  "recipe_014": {
+    "id": "recipe_014",
+    "name": "Shakshuka",
+    "ingredients": [
+      {"name": "eggs", "quantity": 4, "unit": "pcs"},
+      {"name": "tomatoes", "quantity": 3, "unit": "pcs"},
+      {"name": "bell pepper", "quantity": 1, "unit": "pcs"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "paprika", "quantity": 1, "unit": "tsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "feta cheese", "quantity": 50, "unit": "g"}
+    ],
+    "prep_time": 25,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Gluten-Free"],
+    "estimated_cost": 5.0,
+    "instructions": "Sauté onion, garlic, and bell pepper in olive oil until soft. Add cumin and paprika, cook 1 minute. Add chopped tomatoes, simmer 10 minutes. Make 4 wells in the sauce and crack an egg into each. Cover and cook 5-7 minutes until eggs are set. Crumble feta on top and serve."
+  },
+  "recipe_015": {
+    "id": "recipe_015",
+    "name": "Cheese Quesadillas",
+    "ingredients": [
+      {"name": "flour tortillas", "quantity": 4, "unit": "pcs"},
+      {"name": "cheddar cheese", "quantity": 150, "unit": "g"},
+      {"name": "bell pepper", "quantity": 1, "unit": "pcs"},
+      {"name": "onion", "quantity": 0.5, "unit": "pcs"},
+      {"name": "sour cream", "quantity": 4, "unit": "tbsp"},
+      {"name": "butter", "quantity": 10, "unit": "g"}
+    ],
+    "prep_time": 20,
+    "category": "Mexican",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 5.0,
+    "instructions": "Dice bell pepper and onion. Butter one side of each tortilla. Place one tortilla butter-side down in a pan, add grated cheese, peppers, and onion. Top with second tortilla butter-side up. Cook 2-3 minutes per side until golden and cheese melts. Cut into wedges, serve with sour cream."
+  },
+  "recipe_016": {
+    "id": "recipe_016",
+    "name": "Pad Thai",
+    "ingredients": [
+      {"name": "rice noodles", "quantity": 200, "unit": "g"},
+      {"name": "tofu", "quantity": 150, "unit": "g"},
+      {"name": "eggs", "quantity": 2, "unit": "pcs"},
+      {"name": "bean sprouts", "quantity": 80, "unit": "g"},
+      {"name": "spring onion", "quantity": 3, "unit": "pcs"},
+      {"name": "soy sauce", "quantity": 3, "unit": "tbsp"},
+      {"name": "lime juice", "quantity": 2, "unit": "tbsp"},
+      {"name": "peanuts", "quantity": 40, "unit": "g"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"}
+    ],
+    "prep_time": 30,
+    "category": "Asian",
+    "dietary_types": ["Vegetarian"],
+    "estimated_cost": 7.0,
+    "instructions": "Soak rice noodles in warm water 20 minutes, drain. Fry tofu until golden, set aside. Scramble eggs in the pan. Add noodles, soy sauce, and lime juice, stir-fry 3 minutes. Add tofu, bean sprouts, and spring onion. Serve topped with crushed peanuts and a drizzle of sesame oil."
+  },
+  "recipe_017": {
+    "id": "recipe_017",
+    "name": "Caprese Salad",
+    "ingredients": [
+      {"name": "tomatoes", "quantity": 3, "unit": "pcs"},
+      {"name": "mozzarella", "quantity": 200, "unit": "g"},
+      {"name": "fresh basil", "quantity": 15, "unit": "g"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "balsamic vinegar", "quantity": 1, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"},
+      {"name": "black pepper", "quantity": 0.25, "unit": "tsp"}
+    ],
+    "prep_time": 10,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Quick", "Gluten-Free", "Low-Cost"],
+    "estimated_cost": 6.5,
+    "instructions": "Slice tomatoes and mozzarella into equal rounds. Alternate slices on a plate. Tuck fresh basil leaves between slices. Drizzle with olive oil and balsamic vinegar. Season with salt and black pepper. Serve immediately at room temperature."
+  },
+  "recipe_018": {
+    "id": "recipe_018",
+    "name": "Dal Tadka",
+    "ingredients": [
+      {"name": "red lentils", "quantity": 200, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 4, "unit": "pcs"},
+      {"name": "tomatoes", "quantity": 2, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "turmeric", "quantity": 0.5, "unit": "tsp"},
+      {"name": "garam masala", "quantity": 1, "unit": "tsp"},
+      {"name": "butter", "quantity": 20, "unit": "g"},
+      {"name": "vegetable broth", "quantity": 600, "unit": "ml"}
+    ],
+    "prep_time": 30,
+    "category": "Indian",
+    "dietary_types": ["Vegetarian", "Gluten-Free", "High-Protein", "Low-Cost"],
+    "estimated_cost": 4.0,
+    "instructions": "Rinse lentils and simmer in broth with turmeric for 20 minutes until soft. In a separate pan, melt butter and fry cumin seeds until they pop. Add onion and garlic, cook until golden. Add tomatoes and garam masala, cook 5 minutes. Pour the tadka over the lentils, stir and serve."
+  },
+  "recipe_019": {
+    "id": "recipe_019",
+    "name": "Overnight Oats",
+    "ingredients": [
+      {"name": "oats", "quantity": 80, "unit": "g"},
+      {"name": "milk", "quantity": 150, "unit": "ml"},
+      {"name": "yogurt", "quantity": 100, "unit": "g"},
+      {"name": "banana", "quantity": 1, "unit": "pcs"},
+      {"name": "honey", "quantity": 1, "unit": "tbsp"},
+      {"name": "blueberries", "quantity": 50, "unit": "g"}
+    ],
+    "prep_time": 10,
+    "category": "American",
+    "dietary_types": ["Vegetarian", "Quick", "Low-Cost"],
+    "estimated_cost": 3.0,
+    "instructions": "Mix oats, milk, yogurt, and honey in a jar or bowl. Slice banana and stir in half. Cover and refrigerate overnight. In the morning, top with remaining banana slices and fresh blueberries. Add more milk if too thick."
+  },
+  "recipe_020": {
+    "id": "recipe_020",
+    "name": "Tuna Pasta Salad",
+    "ingredients": [
+      {"name": "pasta", "quantity": 200, "unit": "g"},
+      {"name": "canned tuna", "quantity": 160, "unit": "g"},
+      {"name": "cherry tomatoes", "quantity": 100, "unit": "g"},
+      {"name": "cucumber", "quantity": 0.5, "unit": "pcs"},
+      {"name": "red onion", "quantity": 0.5, "unit": "pcs"},
+      {"name": "mayonnaise", "quantity": 3, "unit": "tbsp"},
+      {"name": "lemon juice", "quantity": 1, "unit": "tbsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 20,
+    "category": "Mediterranean",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 6.0,
+    "instructions": "Cook pasta until al dente, rinse with cold water and drain. Halve cherry tomatoes, dice cucumber and red onion. Drain tuna. Mix mayonnaise, lemon juice, and olive oil for dressing. Combine pasta, vegetables, and tuna. Add dressing, toss well, season with salt. Serve cold."
+  }
+}

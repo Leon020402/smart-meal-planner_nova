@@ -1,0 +1,39 @@
+{
+  "plan": {
+    "Monday": {
+      "Breakfast": null,
+      "Lunch": "recipe_001",
+      "Dinner": null
+    },
+    "Tuesday": {
+      "Breakfast": null,
+      "Lunch": "recipe_015",
+      "Dinner": null
+    },
+    "Wednesday": {
+      "Breakfast": null,
+      "Lunch": "recipe_006",
+      "Dinner": null
+    },
+    "Thursday": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null
+    },
+    "Friday": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null
+    },
+    "Saturday": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null
+    },
+    "Sunday": {
+      "Breakfast": null,
+      "Lunch": null,
+      "Dinner": null
+    }
+  }
+}
