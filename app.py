@@ -790,6 +790,15 @@ def _recipe_form(recipe: Recipe = None) -> None:
                     f'`{line_text}` — please use the format `name | quantity | unit`'
                 )
             return
+        if float(estimated_cost) == 0.0:
+            st.warning(
+                "⚠️ Estimated cost is €0.00. This will affect your budget tracking. "
+                "If this is intentional, click **Save** again to confirm."
+            )
+            if "cost_zero_confirmed" not in st.session_state:
+                st.session_state["cost_zero_confirmed"] = True
+                return
+        st.session_state.pop("cost_zero_confirmed", None)
 
         if is_edit:
             recipe.name           = name.strip()

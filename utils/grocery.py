@@ -3,32 +3,28 @@ from models.recipe import Recipe
 from models.pantry_item import PantryItem
 
 # ── Unit conversion table ──────────────────────────────────────────────────────
+# All units are normalised to lowercase before lookup — no duplicates needed.
 # Maps (from_unit, to_unit) -> conversion factor
-# quantity_in_to_unit = quantity_in_from_unit * factor
 _CONVERSIONS = {
-    ("kg", "g"):   1000.0,
-    ("g",  "kg"):  0.001,
-    ("l",  "ml"):  1000.0,
-    ("ml", "l"):   0.001,
-    ("L",  "ml"):  1000.0,
-    ("ml", "L"):   0.001,
-    ("l",  "L"):   1.0,
-    ("L",  "l"):   1.0,
+    ("kg", "g"):  1000.0,
+    ("g",  "kg"): 0.001,
+    ("l",  "ml"): 1000.0,
+    ("ml", "l"):  0.001,
 }
 
 
 def _normalise_unit(unit: str) -> str:
-    """Lowercase and strip unit for comparison."""
+    """Normalise unit to lowercase and strip whitespace for consistent comparison."""
     return unit.strip().lower()
 
 
 def _convert(quantity: float, from_unit: str, to_unit: str):
     """
     Try to convert quantity from from_unit to to_unit.
-    Returns (converted_quantity, to_unit) if conversion is possible,
-    otherwise returns None.
+    Both units are normalised before lookup.
+    Returns converted quantity if conversion is possible, otherwise None.
     """
-    factor = _CONVERSIONS.get((from_unit, to_unit))
+    factor = _CONVERSIONS.get((_normalise_unit(from_unit), _normalise_unit(to_unit)))
     if factor is not None:
         return quantity * factor
     return None
@@ -64,7 +60,7 @@ def generate_grocery_list(
         for ing in recipe.ingredients:
             name = ing["name"].lower().strip()
             qty  = float(ing.get("quantity", 0)) * count
-            unit = ing.get("unit", "")
+            unit = _normalise_unit(ing.get("unit", ""))
             key  = (name, unit)
             needed[key] = needed.get(key, 0) + qty
 
@@ -74,72 +70,67 @@ def generate_grocery_list(
     for item in pantry.values():
         if item.is_expired():
             continue
-        key = (item.name.lower().strip(), item.unit)
+        key = (item.name.lower().strip(), _normalise_unit(item.unit))
         pantry_lookup[key] = pantry_lookup.get(key, 0) + item.quantity
 
     # ── Step 3: Determine what is missing or insufficient ────────────────────
     grocery_list = []
 
     for (name, needed_unit), needed_qty in needed.items():
-        pantry_qty = pantry_lookup.get((name, needed_unit), None)
 
-        if pantry_qty is not None:
-            # ── Exact unit match ──────────────────────────────────────────────
-            missing_qty = needed_qty - pantry_qty
-            if missing_qty > 0:
-                grocery_list.append({
-                    "name": name.title(),
-                    "quantity": round(missing_qty, 2),
-                    "unit": needed_unit,
-                    "status": "partial",
-                    "note": None,
-                })
+        # Sum ALL pantry quantities for this ingredient in the needed unit
+        # (includes exact matches + all convertible units)
+        total_available = 0.0
+        has_any_pantry  = False
+        incompatible_entries = []  # (qty, unit) where conversion is impossible
+
+        for (pname, punit), pqty in pantry_lookup.items():
+            if pname != name:
+                continue
+            has_any_pantry = True
+            if punit == needed_unit:
+                # Exact match — add directly
+                total_available += pqty
+            else:
+                converted = _convert(pqty, punit, needed_unit)
+                if converted is not None:
+                    # Convertible — add in needed unit
+                    total_available += converted
+                else:
+                    # Incompatible unit — record for mismatch warning
+                    incompatible_entries.append((pqty, punit))
+
+        if not has_any_pantry:
+            # Not in pantry at all
+            grocery_list.append({
+                "name": name.title(),
+                "quantity": round(needed_qty, 2),
+                "unit": needed_unit,
+                "status": "missing",
+                "note": None,
+            })
         else:
-            # ── Look for same ingredient with a different unit ─────────────────
-            converted = False
-            for (pname, punit), pqty in pantry_lookup.items():
-                if pname != name:
-                    continue
-                # Try converting pantry quantity to the needed unit
-                pqty_converted = _convert(pqty, punit, needed_unit)
-                if pqty_converted is not None:
-                    # Conversion successful — compare in the same unit
-                    missing_qty = needed_qty - pqty_converted
-                    if missing_qty > 0:
-                        grocery_list.append({
-                            "name": name.title(),
-                            "quantity": round(missing_qty, 2),
-                            "unit": needed_unit,
-                            "status": "partial",
-                            "note": f"Pantry has {pqty} {punit} (≈ {round(pqty_converted, 2)} {needed_unit})",
-                        })
-                    # else: pantry has enough after conversion
-                    converted = True
-                    break
-
-            if not converted:
-                # Check if ingredient exists in pantry with incompatible unit
-                other_unit_entry = next(
-                    ((n, u) for (n, u) in pantry_lookup if n == name),
-                    None
-                )
-                if other_unit_entry:
-                    other_qty = pantry_lookup[other_unit_entry]
+            missing_qty = needed_qty - total_available
+            if missing_qty > 0:
+                if incompatible_entries and total_available == 0.0:
+                    # Only incompatible units available — flag as mismatch
+                    note_parts = ", ".join(f"{q} {u}" for q, u in incompatible_entries)
                     grocery_list.append({
                         "name": name.title(),
                         "quantity": round(needed_qty, 2),
                         "unit": needed_unit,
                         "status": "unit_mismatch",
-                        "note": f"Pantry has {other_qty} {other_unit_entry[1]} — cannot auto-convert",
+                        "note": f"Pantry has {note_parts} — cannot auto-convert",
                     })
                 else:
                     grocery_list.append({
                         "name": name.title(),
-                        "quantity": round(needed_qty, 2),
+                        "quantity": round(missing_qty, 2),
                         "unit": needed_unit,
-                        "status": "missing",
+                        "status": "partial",
                         "note": None,
                     })
+            # else: enough in pantry — nothing to add
 
     grocery_list.sort(key=lambda x: x["name"])
     return grocery_list
