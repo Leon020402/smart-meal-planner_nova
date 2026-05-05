@@ -42,6 +42,16 @@ class MealPlan:
                     seen.append(rid)
         return seen
 
+    def get_recipe_id_counts(self) -> dict:
+        """Return a dict of {recipe_id: count} for all planned meals."""
+        counts = {}
+        for day in self.DAYS:
+            for meal in self.MEAL_TYPES:
+                rid = self.plan[day][meal]
+                if rid:
+                    counts[rid] = counts.get(rid, 0) + 1
+        return counts
+
     def get_total_meals(self) -> int:
         """Return the total number of assigned meals."""
         return sum(

@@ -1,8 +1,22 @@
 {
-  "bf7a75ca-20e9-459d-a44c-aba554f5f071": {
-    "id": "bf7a75ca-20e9-459d-a44c-aba554f5f071",
+  "6e8d84f8-373a-487e-ae5c-7038535f39b9": {
+    "id": "6e8d84f8-373a-487e-ae5c-7038535f39b9",
     "name": "spaghetti",
     "quantity": 50.0,
+    "unit": "g",
+    "expiration_date": null
+  },
+  "36f717de-bc73-443f-a57e-6ec4f01264e1": {
+    "id": "36f717de-bc73-443f-a57e-6ec4f01264e1",
+    "name": "Salt",
+    "quantity": 1.0,
+    "unit": "tsp",
+    "expiration_date": "2026-05-03"
+  },
+  "acf52219-cbf8-4c23-b13e-6805dc14dc7a": {
+    "id": "acf52219-cbf8-4c23-b13e-6805dc14dc7a",
+    "name": "butter",
+    "quantity": 15.0,
     "unit": "g",
     "expiration_date": "2026-05-06"
   }

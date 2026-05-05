@@ -367,5 +367,563 @@
     "dietary_types": ["High-Protein", "Quick"],
     "estimated_cost": 6.0,
     "instructions": "Cook pasta until al dente, rinse with cold water and drain. Halve cherry tomatoes, dice cucumber and red onion. Drain tuna. Mix mayonnaise, lemon juice, and olive oil for dressing. Combine pasta, vegetables, and tuna. Add dressing, toss well, season with salt. Serve cold."
+  },
+  "recipe_021": {
+    "id": "recipe_021",
+    "name": "Pumpkin Soup",
+    "ingredients": [
+      {"name": "pumpkin", "quantity": 600, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "vegetable broth", "quantity": 700, "unit": "ml"},
+      {"name": "coconut milk", "quantity": 150, "unit": "ml"},
+      {"name": "ginger", "quantity": 1, "unit": "tsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 35,
+    "category": "Other",
+    "dietary_types": ["Vegetarian", "Vegan", "Gluten-Free"],
+    "estimated_cost": 5.0,
+    "instructions": "Dice pumpkin, onion, and garlic. Sauté onion and garlic in olive oil. Add pumpkin and ginger, cook 3 minutes. Add broth and simmer 20 minutes until pumpkin is tender. Blend until smooth. Stir in coconut milk, season with salt. Serve with a swirl of coconut milk."
+  },
+  "recipe_022": {
+    "id": "recipe_022",
+    "name": "Beef Stir Fry",
+    "ingredients": [
+      {"name": "beef strips", "quantity": 300, "unit": "g"},
+      {"name": "broccoli", "quantity": 200, "unit": "g"},
+      {"name": "bell pepper", "quantity": 1, "unit": "pcs"},
+      {"name": "soy sauce", "quantity": 3, "unit": "tbsp"},
+      {"name": "oyster sauce", "quantity": 2, "unit": "tbsp"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 25,
+    "category": "Asian",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 10.0,
+    "instructions": "Cook rice. Slice beef and vegetables. Heat oil in a wok over high heat. Stir-fry garlic 30 seconds. Add beef and cook 2-3 minutes. Add vegetables, soy sauce, and oyster sauce. Stir-fry 3-4 minutes until vegetables are tender-crisp. Drizzle sesame oil. Serve over rice."
+  },
+  "recipe_023": {
+    "id": "recipe_023",
+    "name": "Spinach Omelette",
+    "ingredients": [
+      {"name": "eggs", "quantity": 3, "unit": "pcs"},
+      {"name": "spinach", "quantity": 80, "unit": "g"},
+      {"name": "feta cheese", "quantity": 40, "unit": "g"},
+      {"name": "butter", "quantity": 10, "unit": "g"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"},
+      {"name": "black pepper", "quantity": 0.25, "unit": "tsp"}
+    ],
+    "prep_time": 10,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Quick", "Gluten-Free", "Low-Cost"],
+    "estimated_cost": 3.0,
+    "instructions": "Whisk eggs with salt and pepper. Melt butter in a pan. Sauté spinach 1 minute until wilted. Pour eggs over spinach. Cook on medium-low, lifting edges to let raw egg flow underneath. When nearly set, crumble feta on one half. Fold and serve immediately."
+  },
+  "recipe_024": {
+    "id": "recipe_024",
+    "name": "Lamb Chops with Rosemary",
+    "ingredients": [
+      {"name": "lamb chops", "quantity": 4, "unit": "pcs"},
+      {"name": "rosemary", "quantity": 2, "unit": "tsp"},
+      {"name": "garlic", "quantity": 4, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "lemon juice", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"},
+      {"name": "black pepper", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 30,
+    "category": "Mediterranean",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 14.0,
+    "instructions": "Mix olive oil, rosemary, crushed garlic, lemon juice, salt and pepper. Coat lamb chops and marinate 15 minutes. Heat a cast iron pan to high heat. Sear chops 3-4 minutes per side for medium-rare. Rest 5 minutes before serving."
+  },
+  "recipe_025": {
+    "id": "recipe_025",
+    "name": "Veggie Burger",
+    "ingredients": [
+      {"name": "chickpeas", "quantity": 400, "unit": "g"},
+      {"name": "oats", "quantity": 60, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "paprika", "quantity": 1, "unit": "tsp"},
+      {"name": "burger buns", "quantity": 4, "unit": "pcs"},
+      {"name": "lettuce", "quantity": 50, "unit": "g"},
+      {"name": "tomatoes", "quantity": 2, "unit": "pcs"}
+    ],
+    "prep_time": 30,
+    "category": "American",
+    "dietary_types": ["Vegetarian", "Vegan", "High-Protein"],
+    "estimated_cost": 6.5,
+    "instructions": "Mash chickpeas in a bowl, leaving some texture. Finely dice onion and garlic. Mix chickpeas with oats, onion, garlic, cumin, and paprika. Form into 4 patties. Pan-fry 4 minutes per side until golden. Serve in buns with lettuce and sliced tomatoes."
+  },
+  "recipe_026": {
+    "id": "recipe_026",
+    "name": "Prawn Linguine",
+    "ingredients": [
+      {"name": "linguine", "quantity": 200, "unit": "g"},
+      {"name": "prawns", "quantity": 250, "unit": "g"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "cherry tomatoes", "quantity": 150, "unit": "g"},
+      {"name": "white wine", "quantity": 100, "unit": "ml"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "fresh parsley", "quantity": 15, "unit": "g"},
+      {"name": "chili flakes", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 25,
+    "category": "Italian",
+    "dietary_types": ["High-Protein"],
+    "estimated_cost": 11.0,
+    "instructions": "Cook linguine until al dente. Sauté garlic and chili flakes in olive oil. Add prawns, cook 2 minutes per side. Add white wine and cherry tomatoes, simmer 3 minutes. Toss with drained pasta and chopped parsley. Serve immediately."
+  },
+  "recipe_027": {
+    "id": "recipe_027",
+    "name": "Bruschetta",
+    "ingredients": [
+      {"name": "baguette", "quantity": 1, "unit": "pcs"},
+      {"name": "tomatoes", "quantity": 3, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "fresh basil", "quantity": 10, "unit": "g"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "balsamic vinegar", "quantity": 1, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 15,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Vegan", "Quick", "Low-Cost"],
+    "estimated_cost": 4.0,
+    "instructions": "Dice tomatoes and mix with chopped basil, olive oil, balsamic vinegar, and salt. Toast baguette slices. Rub warm toast with a halved garlic clove. Spoon tomato mixture on top. Serve immediately."
+  },
+  "recipe_028": {
+    "id": "recipe_028",
+    "name": "Chicken Caesar Wrap",
+    "ingredients": [
+      {"name": "chicken breast", "quantity": 200, "unit": "g"},
+      {"name": "flour tortillas", "quantity": 2, "unit": "pcs"},
+      {"name": "romaine lettuce", "quantity": 80, "unit": "g"},
+      {"name": "parmesan", "quantity": 30, "unit": "g"},
+      {"name": "caesar dressing", "quantity": 3, "unit": "tbsp"},
+      {"name": "olive oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 20,
+    "category": "American",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 7.5,
+    "instructions": "Season chicken with salt and cook in olive oil 5-6 minutes per side. Slice chicken. Warm tortillas. Layer romaine lettuce, sliced chicken, and grated parmesan on each tortilla. Drizzle with caesar dressing. Roll tightly and slice in half."
+  },
+  "recipe_029": {
+    "id": "recipe_029",
+    "name": "Miso Soup",
+    "ingredients": [
+      {"name": "miso paste", "quantity": 3, "unit": "tbsp"},
+      {"name": "tofu", "quantity": 200, "unit": "g"},
+      {"name": "spring onion", "quantity": 3, "unit": "pcs"},
+      {"name": "seaweed", "quantity": 10, "unit": "g"},
+      {"name": "vegetable broth", "quantity": 800, "unit": "ml"}
+    ],
+    "prep_time": 15,
+    "category": "Asian",
+    "dietary_types": ["Vegetarian", "Vegan", "Quick", "Gluten-Free", "Low-Cost"],
+    "estimated_cost": 3.5,
+    "instructions": "Bring broth to a gentle simmer — do not boil. Whisk miso paste into a ladle of warm broth until dissolved, then add back to pot. Cube tofu and add to soup. Add seaweed. Ladle into bowls and garnish with sliced spring onion."
+  },
+  "recipe_030": {
+    "id": "recipe_030",
+    "name": "Lemon Chicken",
+    "ingredients": [
+      {"name": "chicken thighs", "quantity": 4, "unit": "pcs"},
+      {"name": "lemon", "quantity": 2, "unit": "pcs"},
+      {"name": "garlic", "quantity": 4, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "thyme", "quantity": 1, "unit": "tsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"},
+      {"name": "black pepper", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 45,
+    "category": "Mediterranean",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 9.0,
+    "instructions": "Preheat oven to 200°C. Mix olive oil, lemon juice, crushed garlic, thyme, salt, and pepper. Score chicken thighs and coat with marinade. Place in a baking dish with lemon slices. Roast 35-40 minutes until golden and cooked through. Rest 5 minutes before serving."
+  },
+  "recipe_031": {
+    "id": "recipe_031",
+    "name": "Falafel Bowl",
+    "ingredients": [
+      {"name": "chickpeas", "quantity": 400, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "coriander", "quantity": 1, "unit": "tsp"},
+      {"name": "parsley", "quantity": 20, "unit": "g"},
+      {"name": "flour", "quantity": 3, "unit": "tbsp"},
+      {"name": "tahini", "quantity": 3, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 40,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Vegan", "High-Protein"],
+    "estimated_cost": 6.0,
+    "instructions": "Blend chickpeas, onion, garlic, cumin, coriander, and parsley until coarse. Mix in flour. Shape into small balls and pan-fry in oil until golden, about 3 minutes per side. Cook rice. Serve falafel over rice with tahini drizzled on top."
+  },
+  "recipe_032": {
+    "id": "recipe_032",
+    "name": "Penne Arrabbiata",
+    "ingredients": [
+      {"name": "penne", "quantity": 200, "unit": "g"},
+      {"name": "tomatoes", "quantity": 400, "unit": "g"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "chili flakes", "quantity": 1, "unit": "tsp"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "fresh basil", "quantity": 10, "unit": "g"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 25,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Vegan", "Low-Cost"],
+    "estimated_cost": 4.5,
+    "instructions": "Cook penne until al dente. Sauté garlic and chili flakes in olive oil 1 minute. Add chopped tomatoes, season with salt, simmer 15 minutes. Toss with drained pasta. Tear fresh basil leaves on top and serve."
+  },
+  "recipe_033": {
+    "id": "recipe_033",
+    "name": "Egg Fried Rice",
+    "ingredients": [
+      {"name": "cooked rice", "quantity": 300, "unit": "g"},
+      {"name": "eggs", "quantity": 3, "unit": "pcs"},
+      {"name": "frozen peas", "quantity": 100, "unit": "g"},
+      {"name": "spring onion", "quantity": 3, "unit": "pcs"},
+      {"name": "soy sauce", "quantity": 3, "unit": "tbsp"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"}
+    ],
+    "prep_time": 15,
+    "category": "Asian",
+    "dietary_types": ["Vegetarian", "Quick", "Low-Cost"],
+    "estimated_cost": 3.5,
+    "instructions": "Heat oil in a wok over high heat. Add garlic and stir-fry 30 seconds. Push to one side, scramble eggs in the wok. Add rice and peas, stir-fry 3-4 minutes. Add soy sauce and sesame oil. Toss everything together. Garnish with sliced spring onion."
+  },
+  "recipe_034": {
+    "id": "recipe_034",
+    "name": "Baked Salmon",
+    "ingredients": [
+      {"name": "salmon fillet", "quantity": 400, "unit": "g"},
+      {"name": "lemon", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "dill", "quantity": 1, "unit": "tsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"},
+      {"name": "asparagus", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 25,
+    "category": "Mediterranean",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 12.0,
+    "instructions": "Preheat oven to 200°C. Place salmon and asparagus on a lined baking tray. Mix olive oil, lemon juice, crushed garlic, and dill. Pour over salmon and asparagus. Season with salt. Bake 15-18 minutes until salmon flakes easily. Serve with lemon wedges."
+  },
+  "recipe_035": {
+    "id": "recipe_035",
+    "name": "Tomato Basil Soup",
+    "ingredients": [
+      {"name": "tomatoes", "quantity": 800, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "vegetable broth", "quantity": 400, "unit": "ml"},
+      {"name": "fresh basil", "quantity": 20, "unit": "g"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "cream", "quantity": 50, "unit": "ml"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 35,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Gluten-Free"],
+    "estimated_cost": 5.5,
+    "instructions": "Sauté onion and garlic in olive oil until soft. Add chopped tomatoes and broth, simmer 20 minutes. Add most of the basil and blend until smooth. Stir in cream and season with salt. Serve with remaining fresh basil leaves and a drizzle of olive oil."
+  },
+  "recipe_036": {
+    "id": "recipe_036",
+    "name": "Chicken Tikka Masala",
+    "ingredients": [
+      {"name": "chicken breast", "quantity": 400, "unit": "g"},
+      {"name": "yogurt", "quantity": 100, "unit": "g"},
+      {"name": "tomatoes", "quantity": 400, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "ginger", "quantity": 1, "unit": "tsp"},
+      {"name": "garam masala", "quantity": 2, "unit": "tsp"},
+      {"name": "cream", "quantity": 80, "unit": "ml"},
+      {"name": "rice", "quantity": 200, "unit": "g"}
+    ],
+    "prep_time": 45,
+    "category": "Indian",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 10.0,
+    "instructions": "Marinate chicken in yogurt and half the garam masala for 20 minutes. Grill or pan-fry chicken until charred. Sauté onion, garlic, ginger. Add remaining spices, tomatoes, simmer 15 minutes. Blend sauce, add cream and chicken. Simmer 5 minutes. Serve over rice."
+  },
+  "recipe_037": {
+    "id": "recipe_037",
+    "name": "Zucchini Fritters",
+    "ingredients": [
+      {"name": "zucchini", "quantity": 400, "unit": "g"},
+      {"name": "eggs", "quantity": 2, "unit": "pcs"},
+      {"name": "flour", "quantity": 60, "unit": "g"},
+      {"name": "parmesan", "quantity": 40, "unit": "g"},
+      {"name": "garlic", "quantity": 1, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 25,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 5.0,
+    "instructions": "Grate zucchini, sprinkle with salt, let sit 10 minutes. Squeeze out excess water. Mix with eggs, flour, grated parmesan, and minced garlic. Heat oil in a pan. Fry spoonfuls of batter 3 minutes per side until golden. Serve with sour cream or yogurt."
+  },
+  "recipe_038": {
+    "id": "recipe_038",
+    "name": "French Onion Soup",
+    "ingredients": [
+      {"name": "onion", "quantity": 4, "unit": "pcs"},
+      {"name": "butter", "quantity": 40, "unit": "g"},
+      {"name": "beef broth", "quantity": 800, "unit": "ml"},
+      {"name": "white wine", "quantity": 100, "unit": "ml"},
+      {"name": "baguette", "quantity": 4, "unit": "pcs"},
+      {"name": "gruyere cheese", "quantity": 100, "unit": "g"},
+      {"name": "thyme", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 60,
+    "category": "French",
+    "dietary_types": ["Low-Cost"],
+    "estimated_cost": 7.0,
+    "instructions": "Slice onions thinly. Melt butter and caramelize onions on low heat for 40 minutes, stirring occasionally. Add wine, thyme, and broth. Simmer 15 minutes. Ladle into oven-safe bowls. Top with toasted baguette slices and grated gruyere. Broil until cheese is bubbly and golden."
+  },
+  "recipe_039": {
+    "id": "recipe_039",
+    "name": "Black Bean Bowl",
+    "ingredients": [
+      {"name": "black beans", "quantity": 400, "unit": "g"},
+      {"name": "rice", "quantity": 200, "unit": "g"},
+      {"name": "avocado", "quantity": 1, "unit": "pcs"},
+      {"name": "corn", "quantity": 100, "unit": "g"},
+      {"name": "lime juice", "quantity": 2, "unit": "tbsp"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 20,
+    "category": "Mexican",
+    "dietary_types": ["Vegetarian", "Vegan", "High-Protein", "Gluten-Free", "Quick"],
+    "estimated_cost": 5.5,
+    "instructions": "Cook rice. Drain and rinse black beans, warm in a pan with cumin and olive oil. Slice avocado and toss with lime juice. Assemble bowls: rice, black beans, corn, and avocado. Season with salt and an extra squeeze of lime."
+  },
+  "recipe_040": {
+    "id": "recipe_040",
+    "name": "Pesto Pasta",
+    "ingredients": [
+      {"name": "pasta", "quantity": 200, "unit": "g"},
+      {"name": "fresh basil", "quantity": 50, "unit": "g"},
+      {"name": "pine nuts", "quantity": 30, "unit": "g"},
+      {"name": "parmesan", "quantity": 50, "unit": "g"},
+      {"name": "garlic", "quantity": 1, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 5, "unit": "tbsp"},
+      {"name": "salt", "quantity": 0.5, "unit": "tsp"}
+    ],
+    "prep_time": 20,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Quick"],
+    "estimated_cost": 6.5,
+    "instructions": "Blend basil, pine nuts, garlic, parmesan, and olive oil until smooth. Season with salt. Cook pasta until al dente, reserve 2 tbsp pasta water. Toss hot pasta with pesto and a splash of pasta water to loosen. Serve with extra parmesan."
+  },
+  "recipe_041": {
+    "id": "recipe_041",
+    "name": "Teriyaki Tofu",
+    "ingredients": [
+      {"name": "firm tofu", "quantity": 400, "unit": "g"},
+      {"name": "soy sauce", "quantity": 4, "unit": "tbsp"},
+      {"name": "honey", "quantity": 2, "unit": "tbsp"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "ginger", "quantity": 1, "unit": "tsp"},
+      {"name": "sesame oil", "quantity": 1, "unit": "tbsp"},
+      {"name": "rice", "quantity": 200, "unit": "g"},
+      {"name": "sesame seeds", "quantity": 1, "unit": "tbsp"}
+    ],
+    "prep_time": 25,
+    "category": "Asian",
+    "dietary_types": ["Vegetarian", "Vegan", "High-Protein"],
+    "estimated_cost": 7.0,
+    "instructions": "Press tofu dry and cube. Mix soy sauce, honey, garlic, ginger for teriyaki sauce. Pan-fry tofu in sesame oil until golden on all sides. Add teriyaki sauce and cook 2-3 minutes until caramelized. Cook rice. Serve tofu over rice, sprinkle with sesame seeds."
+  },
+  "recipe_042": {
+    "id": "recipe_042",
+    "name": "Stuffed Bell Peppers",
+    "ingredients": [
+      {"name": "bell pepper", "quantity": 4, "unit": "pcs"},
+      {"name": "ground beef", "quantity": 300, "unit": "g"},
+      {"name": "rice", "quantity": 150, "unit": "g"},
+      {"name": "tomatoes", "quantity": 200, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "mozzarella", "quantity": 80, "unit": "g"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"}
+    ],
+    "prep_time": 50,
+    "category": "Mediterranean",
+    "dietary_types": ["High-Protein", "Gluten-Free"],
+    "estimated_cost": 10.0,
+    "instructions": "Preheat oven to 190°C. Cook rice halfway. Brown beef with onion and garlic. Mix with rice and diced tomatoes. Cut tops off peppers, remove seeds. Fill with beef mixture. Top with mozzarella. Place in baking dish with a splash of water. Bake 30 minutes until peppers are tender."
+  },
+  "recipe_043": {
+    "id": "recipe_043",
+    "name": "Gazpacho",
+    "ingredients": [
+      {"name": "tomatoes", "quantity": 600, "unit": "g"},
+      {"name": "cucumber", "quantity": 1, "unit": "pcs"},
+      {"name": "bell pepper", "quantity": 1, "unit": "pcs"},
+      {"name": "red onion", "quantity": 0.5, "unit": "pcs"},
+      {"name": "garlic", "quantity": 1, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 3, "unit": "tbsp"},
+      {"name": "red wine vinegar", "quantity": 2, "unit": "tbsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 15,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Vegan", "Gluten-Free", "Quick", "Low-Cost"],
+    "estimated_cost": 5.0,
+    "instructions": "Roughly chop all vegetables. Blend tomatoes, cucumber, bell pepper, onion, and garlic until smooth. Add olive oil, red wine vinegar, and salt. Blend again. Adjust seasoning. Refrigerate at least 1 hour before serving. Serve cold with a drizzle of olive oil."
+  },
+  "recipe_044": {
+    "id": "recipe_044",
+    "name": "Coconut Curry Soup",
+    "ingredients": [
+      {"name": "coconut milk", "quantity": 400, "unit": "ml"},
+      {"name": "vegetable broth", "quantity": 400, "unit": "ml"},
+      {"name": "red curry paste", "quantity": 2, "unit": "tbsp"},
+      {"name": "tofu", "quantity": 200, "unit": "g"},
+      {"name": "spinach", "quantity": 80, "unit": "g"},
+      {"name": "mushrooms", "quantity": 150, "unit": "g"},
+      {"name": "lime juice", "quantity": 2, "unit": "tbsp"},
+      {"name": "rice noodles", "quantity": 100, "unit": "g"}
+    ],
+    "prep_time": 25,
+    "category": "Asian",
+    "dietary_types": ["Vegetarian", "Vegan", "Gluten-Free", "Quick"],
+    "estimated_cost": 8.0,
+    "instructions": "Soak rice noodles in hot water 5 minutes. Fry red curry paste 1 minute. Add coconut milk and broth, bring to a simmer. Add cubed tofu and sliced mushrooms, cook 5 minutes. Add spinach and noodles, cook 2 more minutes. Season with lime juice and serve."
+  },
+  "recipe_045": {
+    "id": "recipe_045",
+    "name": "Spanish Tortilla",
+    "ingredients": [
+      {"name": "potatoes", "quantity": 400, "unit": "g"},
+      {"name": "eggs", "quantity": 5, "unit": "pcs"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 5, "unit": "tbsp"},
+      {"name": "salt", "quantity": 1, "unit": "tsp"}
+    ],
+    "prep_time": 40,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Gluten-Free", "Low-Cost"],
+    "estimated_cost": 4.0,
+    "instructions": "Slice potatoes and onion thinly. Fry slowly in olive oil 20 minutes until soft but not crispy. Drain and cool. Beat eggs with salt, mix in potatoes and onion. Heat a little oil in a pan, pour in egg mixture. Cook on medium-low 5 minutes. Flip carefully and cook other side 3 minutes."
+  },
+  "recipe_046": {
+    "id": "recipe_046",
+    "name": "Roasted Vegetable Tray Bake",
+    "ingredients": [
+      {"name": "zucchini", "quantity": 2, "unit": "pcs"},
+      {"name": "bell pepper", "quantity": 2, "unit": "pcs"},
+      {"name": "cherry tomatoes", "quantity": 200, "unit": "g"},
+      {"name": "red onion", "quantity": 1, "unit": "pcs"},
+      {"name": "eggplant", "quantity": 1, "unit": "pcs"},
+      {"name": "olive oil", "quantity": 4, "unit": "tbsp"},
+      {"name": "oregano", "quantity": 1, "unit": "tsp"},
+      {"name": "garlic", "quantity": 3, "unit": "pcs"},
+      {"name": "feta cheese", "quantity": 80, "unit": "g"}
+    ],
+    "prep_time": 45,
+    "category": "Mediterranean",
+    "dietary_types": ["Vegetarian", "Gluten-Free"],
+    "estimated_cost": 7.5,
+    "instructions": "Preheat oven to 200°C. Chop all vegetables into chunks. Toss with olive oil, crushed garlic, and oregano. Spread on a large baking tray. Roast 30-35 minutes until golden and tender, turning halfway. Crumble feta cheese over the top and serve."
+  },
+  "recipe_047": {
+    "id": "recipe_047",
+    "name": "Smoked Salmon Bagel",
+    "ingredients": [
+      {"name": "bagels", "quantity": 2, "unit": "pcs"},
+      {"name": "smoked salmon", "quantity": 120, "unit": "g"},
+      {"name": "cream cheese", "quantity": 80, "unit": "g"},
+      {"name": "red onion", "quantity": 0.25, "unit": "pcs"},
+      {"name": "capers", "quantity": 1, "unit": "tbsp"},
+      {"name": "lemon juice", "quantity": 1, "unit": "tbsp"},
+      {"name": "dill", "quantity": 5, "unit": "g"}
+    ],
+    "prep_time": 10,
+    "category": "American",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 8.5,
+    "instructions": "Slice bagels in half and toast. Spread cream cheese generously on each half. Layer smoked salmon on top. Add thinly sliced red onion and capers. Squeeze lemon juice over everything. Garnish with fresh dill and serve immediately."
+  },
+  "recipe_048": {
+    "id": "recipe_048",
+    "name": "Minestrone",
+    "ingredients": [
+      {"name": "cannellini beans", "quantity": 400, "unit": "g"},
+      {"name": "tomatoes", "quantity": 400, "unit": "g"},
+      {"name": "zucchini", "quantity": 1, "unit": "pcs"},
+      {"name": "carrots", "quantity": 2, "unit": "pcs"},
+      {"name": "celery", "quantity": 2, "unit": "pcs"},
+      {"name": "pasta", "quantity": 100, "unit": "g"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "garlic", "quantity": 2, "unit": "pcs"},
+      {"name": "vegetable broth", "quantity": 1000, "unit": "ml"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"}
+    ],
+    "prep_time": 45,
+    "category": "Italian",
+    "dietary_types": ["Vegetarian", "Vegan", "Low-Cost"],
+    "estimated_cost": 5.5,
+    "instructions": "Dice all vegetables. Sauté onion, garlic, carrots, and celery in olive oil 5 minutes. Add tomatoes, broth, and beans. Bring to a boil, add zucchini and pasta. Simmer 15 minutes until pasta is cooked. Season generously. Serve with crusty bread."
+  },
+  "recipe_049": {
+    "id": "recipe_049",
+    "name": "Chicken Fajitas",
+    "ingredients": [
+      {"name": "chicken breast", "quantity": 350, "unit": "g"},
+      {"name": "bell pepper", "quantity": 2, "unit": "pcs"},
+      {"name": "onion", "quantity": 1, "unit": "pcs"},
+      {"name": "flour tortillas", "quantity": 6, "unit": "pcs"},
+      {"name": "cumin", "quantity": 1, "unit": "tsp"},
+      {"name": "smoked paprika", "quantity": 1, "unit": "tsp"},
+      {"name": "lime juice", "quantity": 2, "unit": "tbsp"},
+      {"name": "olive oil", "quantity": 2, "unit": "tbsp"},
+      {"name": "sour cream", "quantity": 4, "unit": "tbsp"}
+    ],
+    "prep_time": 25,
+    "category": "Mexican",
+    "dietary_types": ["High-Protein", "Quick"],
+    "estimated_cost": 9.0,
+    "instructions": "Slice chicken, peppers, and onion into strips. Toss chicken with cumin, paprika, lime juice, and olive oil. Stir-fry chicken 5-6 minutes in a hot pan. Add peppers and onion, cook 3-4 more minutes. Warm tortillas. Fill with chicken mixture and a dollop of sour cream."
+  },
+  "recipe_050": {
+    "id": "recipe_050",
+    "name": "Bircher Muesli",
+    "ingredients": [
+      {"name": "oats", "quantity": 80, "unit": "g"},
+      {"name": "apple", "quantity": 1, "unit": "pcs"},
+      {"name": "milk", "quantity": 100, "unit": "ml"},
+      {"name": "yogurt", "quantity": 100, "unit": "g"},
+      {"name": "lemon juice", "quantity": 1, "unit": "tbsp"},
+      {"name": "honey", "quantity": 1, "unit": "tbsp"},
+      {"name": "almonds", "quantity": 20, "unit": "g"},
+      {"name": "blueberries", "quantity": 50, "unit": "g"}
+    ],
+    "prep_time": 10,
+    "category": "Other",
+    "dietary_types": ["Vegetarian", "Quick", "Low-Cost"],
+    "estimated_cost": 3.5,
+    "instructions": "Combine oats, milk, yogurt, and lemon juice. Grate apple and stir in. Cover and refrigerate overnight. In the morning, stir in honey. Top with sliced almonds and fresh blueberries. Add extra milk if too thick."
   }
 }

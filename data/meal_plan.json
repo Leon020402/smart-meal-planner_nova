@@ -1,18 +1,18 @@
 {
   "plan": {
     "Monday": {
-      "Breakfast": null,
-      "Lunch": "recipe_001",
-      "Dinner": null
+      "Breakfast": "recipe_008",
+      "Lunch": "recipe_008",
+      "Dinner": "recipe_015"
     },
     "Tuesday": {
       "Breakfast": null,
-      "Lunch": "recipe_015",
+      "Lunch": null,
       "Dinner": null
     },
     "Wednesday": {
       "Breakfast": null,
-      "Lunch": "recipe_006",
+      "Lunch": null,
       "Dinner": null
     },
     "Thursday": {

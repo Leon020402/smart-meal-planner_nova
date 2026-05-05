@@ -25,6 +25,7 @@ from utils.storage import (
 )
 from utils.grocery import generate_grocery_list
 from utils.suggestions import suggest_recipes_by_pantry, suggest_recipes_for_expiring
+from utils.pdf_export import generate_meal_plan_pdf
 
 # ── Page config — must be the very first Streamlit call ────────────────────────
 st.set_page_config(
@@ -145,6 +146,16 @@ div[data-testid="metric-container"] [data-testid="stMetricValue"] {
 .stButton > button[kind="primary"] div {
     color: #FFFFFF !important;
 }
+/* Also catch form submit buttons which use a different kind */
+.stFormSubmitButton > button {
+    background: #1F2937 !important;
+    border-color: #1F2937 !important;
+    color: #FFFFFF !important;
+}
+.stFormSubmitButton > button p,
+.stFormSubmitButton > button span {
+    color: #FFFFFF !important;
+}
 .stButton > button[kind="secondary"] {
     background: #FFFFFF !important;
     color: var(--text) !important;
@@ -262,23 +273,29 @@ _JS = """
 # HELPER FUNCTIONS
 # ══════════════════════════════════════════════════════════════════════════════
 
-def parse_ingredients(text: str) -> list:
+def parse_ingredients(text: str) -> tuple:
     """
     Parse a multi-line ingredient string into a list of dicts.
     Expected format (one ingredient per line):  name | quantity | unit
-    Lines that cannot be parsed are silently skipped.
+    Returns (ingredients, failed_lines) where failed_lines is a list of
+    (line_number, original_text) tuples for lines that could not be parsed.
     """
     ingredients = []
-    for line in text.strip().splitlines():
+    failed_lines = []
+    for i, line in enumerate(text.strip().splitlines(), start=1):
+        if not line.strip():
+            continue
         parts = [p.strip() for p in line.split("|")]
         if len(parts) != 3 or not parts[0]:
+            failed_lines.append((i, line.strip()))
             continue
         try:
             qty = float(parts[1])
         except ValueError:
+            failed_lines.append((i, line.strip()))
             continue
         ingredients.append({"name": parts[0], "quantity": qty, "unit": parts[2]})
-    return ingredients
+    return ingredients, failed_lines
 
 
 def format_ingredients(ingredients: list) -> str:
@@ -344,7 +361,6 @@ def get_recipe_icon(recipe) -> str:
     if cat == "french":        return "🥐"
 
     return "🍽️"
-    return [item for item in pantry.values() if item.is_expiring_soon() and not item.is_expired()]
 
 
 def get_expired_items(pantry: dict) -> list:
@@ -397,10 +413,10 @@ def show_dashboard() -> None:
     meal_plan = st.session_state.meal_plan
     budget   = st.session_state.budget
 
-    # Planned cost across unique recipes
+    # Planned cost — multiply each recipe's cost by how many times it's planned
     planned_cost = sum(
-        recipes[rid].estimated_cost
-        for rid in meal_plan.get_all_recipe_ids()
+        recipes[rid].estimated_cost * count
+        for rid, count in meal_plan.get_recipe_id_counts().items()
         if rid in recipes
     )
 
@@ -411,6 +427,33 @@ def show_dashboard() -> None:
     c3.metric("Meals Planned", meal_plan.get_total_meals())
     budget_delta = f"€{budget - planned_cost:.2f} remaining"
     c4.metric("Planned Cost", f"€{planned_cost:.2f}", budget_delta)
+
+    st.markdown("---")
+
+    # ── Weekly overview grid ──────────────────────────────────────────────────
+    col_title, col_btn = st.columns([5, 1])
+    col_title.subheader("This Week at a Glance")
+
+    pdf_bytes = generate_meal_plan_pdf(meal_plan, recipes)
+    col_btn.download_button(
+        label="⬇ PDF",
+        data=pdf_bytes,
+        file_name="meal_plan.pdf",
+        mime="application/pdf",
+        use_container_width=True,
+    )
+    cols = st.columns(7)
+    for i, day in enumerate(MealPlan.DAYS):
+        with cols[i]:
+            st.markdown(f"**{day[:3]}**")
+            for meal in MealPlan.MEAL_TYPES:
+                rid = meal_plan.plan[day][meal]
+                if rid and rid in recipes:
+                    name = recipes[rid].name
+                    short = name if len(name) <= 14 else name[:13] + "…"
+                    st.caption(f"_{meal[0]}_: {short}")
+                else:
+                    st.caption(f"_{meal[0]}_: —")
 
     st.markdown("---")
 
@@ -435,69 +478,273 @@ def show_dashboard() -> None:
     if not expired and not expiring:
         st.success("✅ All pantry items are fresh — nothing expiring soon!")
 
-    st.markdown("---")
-
-    # ── Weekly overview grid ──────────────────────────────────────────────────
-    st.subheader("This Week at a Glance")
-    cols = st.columns(7)
-    for i, day in enumerate(MealPlan.DAYS):
-        with cols[i]:
-            st.markdown(f"**{day[:3]}**")
-            any_meal = False
-            for meal in MealPlan.MEAL_TYPES:
-                rid = meal_plan.plan[day][meal]
-                if rid and rid in recipes:
-                    name = recipes[rid].name
-                    short = name if len(name) <= 14 else name[:13] + "…"
-                    st.caption(f"_{meal[0]}_: {short}")
-                    any_meal = True
-                else:
-                    st.caption(f"_{meal[0]}_: —")
-            if not any_meal:
-                pass  # All dashes shown above
-
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: RECIPES
 # ══════════════════════════════════════════════════════════════════════════════
+
+def _parse_scraped_ingredient(text: str):
+    """Parse one scraped ingredient line into (name, quantity, unit) or None."""
+    import re
+
+    FRACTIONS = {
+        "½": 0.5, "⅓": 1/3, "⅔": 2/3, "¼": 0.25, "¾": 0.75,
+        "⅛": 0.125, "⅜": 0.375, "⅝": 0.625, "⅞": 0.875,
+        "⅙": 1/6, "⅚": 5/6, "⅕": 0.2, "⅖": 0.4, "⅗": 0.6, "⅘": 0.8,
+    }
+    UNIT_MAP = {
+        "kg": "kg", "kilogram": "kg", "kilograms": "kg",
+        "g": "g", "gram": "g", "grams": "g",
+        "ml": "ml", "milliliter": "ml", "milliliters": "ml", "millilitre": "ml",
+        "l": "L", "liter": "L", "liters": "L", "litre": "L", "litres": "L",
+        "tbsp": "tbsp", "tablespoon": "tbsp", "tablespoons": "tbsp", "tbs": "tbsp",
+        "tsp": "tsp", "teaspoon": "tsp", "teaspoons": "tsp",
+        "cup": "cup", "cups": "cup",
+        "oz": "oz", "ounce": "oz", "ounces": "oz",
+        "lb": "lb", "lbs": "lb", "pound": "lb", "pounds": "lb",
+        "pcs": "pcs", "piece": "pcs", "pieces": "pcs",
+        "pinch": "pinch", "pinches": "pinch",
+        "clove": "pcs", "cloves": "pcs",
+        "slice": "pcs", "slices": "pcs",
+        "can": "pcs", "cans": "pcs",
+        "bunch": "pcs", "bunches": "pcs",
+        "stalk": "pcs", "stalks": "pcs",
+        "sprig": "pcs", "sprigs": "pcs",
+        "pot": "pcs",
+    }
+
+    text = text.lstrip("#").strip()
+    text = re.sub(r"\([^)]*\)", "", text).strip()
+    text = re.sub(r"\s+", " ", text).strip().rstrip("),.")
+
+    for frac, val in FRACTIONS.items():
+        text = text.replace(frac, str(val))
+
+    text = re.sub(r"(\d+(?:\.\d+)?)\s+to\s+\d+(?:\.\d+)?", r"\1", text)
+
+    # Format 1: "100g flour" — qty glued to unit
+    m_glued = re.match(r"^(\d+(?:\.\d+)?)\s*([a-zA-Z]+)\s+(.+)$", text)
+    if m_glued:
+        try:
+            qty = float(m_glued.group(1))
+        except ValueError:
+            qty = 1.0
+        unit_word = m_glued.group(2).lower()
+        name = m_glued.group(3).strip().rstrip("),").strip()
+        if unit_word in UNIT_MAP:
+            return name.title(), round(qty, 2), UNIT_MAP[unit_word]
+
+    # Format 2: "2 tablespoons olive oil"
+    m = re.match(
+        r"^(\d+(?:\.\d+)?(?:\s+\d+(?:\.\d+)?)?)\s+([a-zA-Z]+)(?:\s+(.+))?$",
+        text.strip()
+    )
+    if m:
+        try:
+            qty = sum(float(p) for p in m.group(1).split())
+        except ValueError:
+            qty = 1.0
+        word = m.group(2).lower()
+        rest = (m.group(3) or "").strip().rstrip("),").strip()
+        if word in UNIT_MAP:
+            name = rest if rest else word
+            unit = UNIT_MAP[word]
+        else:
+            name = (word + (" " + rest if rest else "")).strip()
+            unit = "pcs"
+        name = re.sub(r"\s+", " ", name).strip()
+        if name:
+            return name.title(), round(qty, 2), unit
+
+    return None
+
+
+def _scrape_recipe_from_url(url: str) -> dict:
+    """Scrape a recipe from a URL using recipe-scrapers."""
+    from recipe_scrapers import scrape_me
+    try:
+        scraper = scrape_me(url, wild_mode=True)
+    except TypeError:
+        scraper = scrape_me(url)
+
+    try:
+        title = scraper.title() or ""
+    except Exception:
+        title = ""
+
+    try:
+        prep = scraper.total_time() or scraper.prep_time() or 20
+    except Exception:
+        prep = 20
+
+    try:
+        instructions = scraper.instructions() or ""
+    except Exception:
+        instructions = ""
+
+    raw_ingredients, parsed_lines, failed_lines = [], [], []
+    try:
+        for ing in scraper.ingredients():
+            raw_ingredients.append(ing)
+            result = _parse_scraped_ingredient(ing)
+            if result:
+                n, q, u = result
+                parsed_lines.append(f"{n} | {q} | {u}")
+            else:
+                failed_lines.append(f"# {ing}")
+    except Exception:
+        pass
+
+    detected_category = "Other"
+    try:
+        cuisine = (scraper.cuisine() or "").lower()
+    except Exception:
+        cuisine = ""
+    name_lower = title.lower()
+    if any(w in cuisine or w in name_lower for w in ["italian", "pasta", "pizza", "risotto"]):
+        detected_category = "Italian"
+    elif any(w in cuisine or w in name_lower for w in ["asian", "chinese", "japanese", "thai", "korean", "stir", "wok"]):
+        detected_category = "Asian"
+    elif any(w in cuisine or w in name_lower for w in ["mexican", "taco", "burrito", "enchilada", "quesadilla"]):
+        detected_category = "Mexican"
+    elif any(w in cuisine or w in name_lower for w in ["mediterranean", "greek", "turkish", "lebanese"]):
+        detected_category = "Mediterranean"
+    elif any(w in cuisine or w in name_lower for w in ["american", "burger", "bbq", "pancake", "waffle"]):
+        detected_category = "American"
+    elif any(w in cuisine or w in name_lower for w in ["indian", "curry", "masala", "tikka", "butter chicken", "dal", "biryani"]):
+        detected_category = "Indian"
+    elif any(w in cuisine or w in name_lower for w in ["french", "crepe", "quiche", "ratatouille"]):
+        detected_category = "French"
+
+    all_text = (title + " " + " ".join(raw_ingredients) + " " + instructions).lower()
+    detected_dietary = []
+    animal = ["meat", "chicken", "beef", "pork", "lamb", "fish", "salmon", "tuna",
+              "shrimp", "prawn", "egg", "milk", "cream", "butter", "cheese",
+              "yogurt", "honey", "pancetta", "bacon", "ham", "gelatin"]
+    meat_fish = ["meat", "chicken", "beef", "pork", "lamb", "fish", "salmon", "tuna",
+                 "shrimp", "prawn", "pancetta", "bacon", "ham", "anchovy", "gelatin"]
+    if not any(w in all_text for w in animal):
+        detected_dietary += ["Vegan", "Vegetarian"]
+    elif not any(w in all_text for w in meat_fish):
+        detected_dietary.append("Vegetarian")
+    if any(w in all_text for w in ["chicken", "beef", "fish", "salmon", "tuna", "shrimp",
+                                    "lentil", "chickpea", "tofu", "egg", "steak", "lamb"]):
+        detected_dietary.append("High-Protein")
+    if int(prep) <= 30 if prep else False:
+        detected_dietary.append("Quick")
+    if not any(w in all_text for w in ["flour", "pasta", "bread", "wheat", "barley",
+                                        "tortilla", "crouton", "noodle", "couscous"]):
+        detected_dietary.append("Gluten-Free")
+
+    return {
+        "name": title,
+        "prep_time": int(prep) if prep else 20,
+        "instructions": instructions,
+        "raw_ingredients": raw_ingredients,
+        "parsed_lines": parsed_lines,
+        "failed_lines": failed_lines,
+        "category": detected_category,
+        "dietary_types": detected_dietary,
+    }
+
 
 def _recipe_form(recipe: Recipe = None) -> None:
     """Render the add / edit form for a Recipe."""
     is_edit = recipe is not None
     st.subheader("Edit Recipe" if is_edit else "New Recipe")
 
+    # ── URL Scraper (only shown when adding a new recipe) ─────────────────────
+    if not is_edit:
+        if "show_url_importer" not in st.session_state:
+            st.session_state.show_url_importer = False
+
+        if st.button("↓  Import from URL", use_container_width=False):
+            st.session_state.show_url_importer = not st.session_state.show_url_importer
+            st.rerun()
+
+        if st.session_state.show_url_importer:
+            with st.container(border=True):
+                url_col, btn_col = st.columns([5, 1])
+                url_input = url_col.text_input(
+                    "Paste a recipe URL to auto-fill the fields below",
+                    placeholder="https://www.bbcgoodfood.com/recipes/...",
+                )
+                import_clicked = btn_col.button("Import", use_container_width=True, type="primary")
+
+                if import_clicked and url_input.strip():
+                    with st.spinner("Fetching recipe…"):
+                        try:
+                            scraped_data = _scrape_recipe_from_url(url_input.strip())
+                            st.session_state["scraped_recipe"] = scraped_data
+                            st.session_state["import_msg"] = ("success", f"✅ Imported: **{scraped_data['name']}** — fields are pre-filled below.")
+                            st.session_state.show_url_importer = False
+                            st.rerun()
+                        except Exception as e:
+                            st.error(f"❌ Could not import recipe. The site may not be supported. ({e})")
+
+        # Show persisted import message (survives rerun)
+        if "import_msg" in st.session_state:
+            msg_type, msg_text = st.session_state.pop("import_msg")
+            if msg_type == "success":
+                st.success(msg_text)
+                st.info("📋 Please review all pre-filled fields before saving — automatic parsing may not be 100% accurate.")
+
+        st.markdown("")
+
+    # Pull scraped values if available
+    scraped = st.session_state.get("scraped_recipe", {}) if not is_edit else {}
+
+    # Build ingredient text: parsed lines first, then unparseable as comments
+    scraped_ing_text = ""
+    has_failed = False
+    if scraped.get("parsed_lines") or scraped.get("failed_lines"):
+        all_lines = scraped.get("parsed_lines", []) + scraped.get("failed_lines", [])
+        scraped_ing_text = "\n".join(all_lines)
+        has_failed = bool(scraped.get("failed_lines"))
+
     with st.form("recipe_form", clear_on_submit=False):
         col1, col2 = st.columns(2)
         name = col1.text_input(
             "Recipe Name *",
-            value=recipe.name if is_edit else "",
+            value=recipe.name if is_edit else scraped.get("name", ""),
             placeholder="e.g. Chicken Stir Fry",
         )
-        cat_idx = Recipe.CATEGORY_OPTIONS.index(recipe.category) \
-            if is_edit and recipe.category in Recipe.CATEGORY_OPTIONS else 0
+        if is_edit and recipe.category in Recipe.CATEGORY_OPTIONS:
+            cat_idx = Recipe.CATEGORY_OPTIONS.index(recipe.category)
+        elif scraped.get("category") in Recipe.CATEGORY_OPTIONS:
+            cat_idx = Recipe.CATEGORY_OPTIONS.index(scraped["category"])
+        else:
+            cat_idx = 0
         category = col2.selectbox("Category", Recipe.CATEGORY_OPTIONS, index=cat_idx)
 
         col3, col4 = st.columns(2)
         prep_time = col3.number_input(
             "Prep Time (minutes)", min_value=1, max_value=360,
-            value=recipe.prep_time if is_edit else 20,
+            value=recipe.prep_time if is_edit else scraped.get("prep_time", 20),
         )
         estimated_cost = col4.number_input(
             "Estimated Cost (€)", min_value=0.0, max_value=500.0, step=0.5,
-            value=recipe.estimated_cost if is_edit else 5.0,
+            value=recipe.estimated_cost if is_edit else 0.0,
         )
+        if not is_edit and not recipe:
+            col4.caption("Enter estimated cost manually.")
 
         dietary_types = st.multiselect(
             "Dietary Types",
             Recipe.DIETARY_OPTIONS,
-            default=recipe.dietary_types if is_edit else [],
+            default=recipe.dietary_types if is_edit else scraped.get("dietary_types", []),
         )
 
         st.markdown(
             "**Ingredients** &nbsp;—&nbsp; one per line, format: `name | quantity | unit`"
         )
-        default_ing = format_ingredients(recipe.ingredients) if is_edit \
-            else "pasta | 200 | g\neggs | 2 | pcs"
+        if is_edit:
+            default_ing = format_ingredients(recipe.ingredients)
+        elif scraped_ing_text:
+            default_ing = scraped_ing_text
+        else:
+            default_ing = "pasta | 200 | g\neggs | 2 | pcs"
+
         ingredient_text = st.text_area(
             "Ingredients",
             value=default_ing,
@@ -506,9 +753,13 @@ def _recipe_form(recipe: Recipe = None) -> None:
             placeholder="pasta | 200 | g\neggs | 2 | pcs\nolive oil | 2 | tbsp",
         )
 
+        if scraped_ing_text and not is_edit:
+            if has_failed:
+                st.caption("⚠️ Some ingredients (marked with #) could not be parsed automatically — please reformat them to `name | quantity | unit` before saving. Please review all fields carefully before saving.")
+
         instructions = st.text_area(
             "Instructions",
-            value=recipe.instructions if is_edit else "",
+            value=recipe.instructions if is_edit else scraped.get("instructions", ""),
             height=100,
             placeholder="Describe the preparation steps…",
         )
@@ -521,15 +772,23 @@ def _recipe_form(recipe: Recipe = None) -> None:
     if cancelled:
         st.session_state.editing_recipe_id = None
         st.session_state.show_add_recipe   = False
+        st.session_state.pop("scraped_recipe", None)
         st.rerun()
 
     if submitted:
         if not name.strip():
             st.error("Recipe name is required.")
             return
-        ingredients = parse_ingredients(ingredient_text)
+        ingredients, failed_lines = parse_ingredients(ingredient_text)
         if not ingredients:
             st.error("Please add at least one ingredient using the format:  name | quantity | unit")
+            return
+        if failed_lines:
+            for line_num, line_text in failed_lines:
+                st.warning(
+                    f"Line {line_num} could not be parsed and was skipped: "
+                    f'`{line_text}` — please use the format `name | quantity | unit`'
+                )
             return
 
         if is_edit:
@@ -556,6 +815,7 @@ def _recipe_form(recipe: Recipe = None) -> None:
         save_recipes(st.session_state.recipes)
         st.session_state.editing_recipe_id = None
         st.session_state.show_add_recipe   = False
+        st.session_state.pop("scraped_recipe", None)
         st.success("✅ Recipe saved!")
         st.rerun()
 
@@ -617,7 +877,8 @@ def show_recipes() -> None:
                     st.markdown(
                         f"🏷️ **{recipe.category}** &nbsp;·&nbsp; "
                         f"⏱️ **{recipe.prep_time} min** &nbsp;·&nbsp; "
-                        f"💰 **€{recipe.estimated_cost:.2f}**"
+                        f"<span style='white-space:nowrap'>💰 **€{recipe.estimated_cost:.2f}**</span>",
+                        unsafe_allow_html=True,
                     )
 
                     if recipe.dietary_types:
@@ -790,7 +1051,7 @@ def show_pantry() -> None:
     st.markdown("---")
 
     # ── Table header ─────────────────────────────────────────────────────────
-    hdr = st.columns([3, 1, 1, 2, 1])
+    hdr = st.columns([3, 1, 1, 2, 2])
     hdr[0].markdown("**Ingredient**")
     hdr[1].markdown("**Qty**")
     hdr[2].markdown("**Unit**")
@@ -810,7 +1071,8 @@ def show_pantry() -> None:
 
         if item.is_expired():
             icon  = "🔴"
-            label = "Expired"
+            days_ago = abs(item.days_until_expiry())
+            label = f"Expired {days_ago} day{'s' if days_ago != 1 else ''} ago" if days_ago > 0 else "Expired today"
         elif item.is_expiring_soon():
             icon  = "🟡"
             d     = item.days_until_expiry()
@@ -903,8 +1165,8 @@ def show_meal_planner() -> None:
     # ── Summary ───────────────────────────────────────────────────────────────
     total_meals = meal_plan.get_total_meals()
     total_cost  = sum(
-        recipes[rid].estimated_cost
-        for rid in meal_plan.get_all_recipe_ids()
+        recipes[rid].estimated_cost * count
+        for rid, count in meal_plan.get_recipe_id_counts().items()
         if rid in recipes
     )
 
@@ -1091,14 +1353,14 @@ def show_budget() -> None:
     st.markdown("---")
 
     # ── Cost summary ──────────────────────────────────────────────────────────
-    planned_ids     = meal_plan.get_all_recipe_ids()
-    planned_recipes = [(rid, recipes[rid]) for rid in planned_ids if rid in recipes]
+    recipe_counts   = meal_plan.get_recipe_id_counts()
+    planned_recipes = [(rid, recipes[rid], count) for rid, count in recipe_counts.items() if rid in recipes]
 
     if not planned_recipes:
         st.info("No meals planned yet. Go to **🗓️ Meal Planner** to assign recipes!")
         return
 
-    total_cost = sum(r.estimated_cost for _, r in planned_recipes)
+    total_cost = sum(r.estimated_cost * count for _, r, count in planned_recipes)
     remaining  = budget - total_cost
 
     c1, c2, c3 = st.columns(3)
