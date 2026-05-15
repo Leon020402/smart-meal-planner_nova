@@ -1,23 +1,72 @@
 {
-  "6e8d84f8-373a-487e-ae5c-7038535f39b9": {
-    "id": "6e8d84f8-373a-487e-ae5c-7038535f39b9",
-    "name": "spaghetti",
-    "quantity": 50.0,
+  "cfc1c219-2251-41b6-b774-825b53eee113": {
+    "id": "cfc1c219-2251-41b6-b774-825b53eee113",
+    "name": "pasta",
+    "quantity": 500.0,
     "unit": "g",
     "expiration_date": null
   },
-  "36f717de-bc73-443f-a57e-6ec4f01264e1": {
-    "id": "36f717de-bc73-443f-a57e-6ec4f01264e1",
-    "name": "Salt",
-    "quantity": 1.0,
-    "unit": "tsp",
-    "expiration_date": "2026-05-03"
+  "18225f01-3f3a-4261-9d47-d359e2c9c8ae": {
+    "id": "18225f01-3f3a-4261-9d47-d359e2c9c8ae",
+    "name": "eggs",
+    "quantity": 6.0,
+    "unit": "pcs",
+    "expiration_date": "2026-06-26"
   },
-  "acf52219-cbf8-4c23-b13e-6805dc14dc7a": {
-    "id": "acf52219-cbf8-4c23-b13e-6805dc14dc7a",
+  "dfbd137d-eb8c-432f-bc48-6dd7d3e6264a": {
+    "id": "dfbd137d-eb8c-432f-bc48-6dd7d3e6264a",
+    "name": "milk",
+    "quantity": 1.0,
+    "unit": "L",
+    "expiration_date": "2026-05-19"
+  },
+  "fc557fec-16af-4074-8e42-0ab8f9e7169c": {
+    "id": "fc557fec-16af-4074-8e42-0ab8f9e7169c",
     "name": "butter",
-    "quantity": 15.0,
+    "quantity": 100.0,
     "unit": "g",
-    "expiration_date": "2026-05-06"
+    "expiration_date": "2026-05-20"
+  },
+  "876d94a0-ad4c-40a4-be51-7a1ac426d92a": {
+    "id": "876d94a0-ad4c-40a4-be51-7a1ac426d92a",
+    "name": "garlic",
+    "quantity": 3.0,
+    "unit": "pcs",
+    "expiration_date": null
+  },
+  "35febca7-d1d0-49b0-9231-956d767a694e": {
+    "id": "35febca7-d1d0-49b0-9231-956d767a694e",
+    "name": "tomatoes",
+    "quantity": 200.0,
+    "unit": "g",
+    "expiration_date": null
+  },
+  "459e59d5-3063-4bdb-bebf-5153f57a8435": {
+    "id": "459e59d5-3063-4bdb-bebf-5153f57a8435",
+    "name": "rice",
+    "quantity": 1.0,
+    "unit": "kg",
+    "expiration_date": null
+  },
+  "08ee9fcc-5935-47da-8480-691920335277": {
+    "id": "08ee9fcc-5935-47da-8480-691920335277",
+    "name": "feta cheese",
+    "quantity": 150.0,
+    "unit": "g",
+    "expiration_date": "2026-05-23"
+  },
+  "3dc2d427-96f0-4cd0-9d0f-8cecd7955bf7": {
+    "id": "3dc2d427-96f0-4cd0-9d0f-8cecd7955bf7",
+    "name": "parmesan",
+    "quantity": 20.0,
+    "unit": "g",
+    "expiration_date": "2026-05-25"
+  },
+  "542fa288-b1bd-4dfd-80a4-b66c245d8d55": {
+    "id": "542fa288-b1bd-4dfd-80a4-b66c245d8d55",
+    "name": "coconut milk",
+    "quantity": 400.0,
+    "unit": "ml",
+    "expiration_date": null
   }
 }

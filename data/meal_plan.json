@@ -2,38 +2,38 @@
   "plan": {
     "Monday": {
       "Breakfast": "recipe_008",
-      "Lunch": "recipe_008",
-      "Dinner": "recipe_015"
+      "Lunch": "recipe_018",
+      "Dinner": "recipe_003"
     },
     "Tuesday": {
-      "Breakfast": null,
-      "Lunch": null,
-      "Dinner": null
+      "Breakfast": "recipe_002",
+      "Lunch": "recipe_043",
+      "Dinner": "recipe_026"
     },
     "Wednesday": {
       "Breakfast": null,
-      "Lunch": null,
-      "Dinner": null
+      "Lunch": "recipe_044",
+      "Dinner": "recipe_013"
     },
     "Thursday": {
-      "Breakfast": null,
+      "Breakfast": "recipe_008",
       "Lunch": null,
-      "Dinner": null
+      "Dinner": "recipe_024"
     },
     "Friday": {
-      "Breakfast": null,
-      "Lunch": null,
-      "Dinner": null
+      "Breakfast": "recipe_050",
+      "Lunch": "recipe_034",
+      "Dinner": "recipe_010"
     },
     "Saturday": {
       "Breakfast": null,
-      "Lunch": null,
-      "Dinner": null
+      "Lunch": "recipe_006",
+      "Dinner": "recipe_049"
     },
     "Sunday": {
-      "Breakfast": null,
-      "Lunch": null,
-      "Dinner": null
+      "Breakfast": "recipe_002",
+      "Lunch": "recipe_031",
+      "Dinner": "recipe_021"
     }
   }
 }
